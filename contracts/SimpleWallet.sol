@@ -19,7 +19,7 @@ contract SimpleWallet{
   event Deposit(address _sender, uint amount);
   event Withdrawal(address _sender, uint amount, address _beneficiary);
 
-  function SimpleWallet(){
+  function SimpleWallet() payable{
     owner = msg.sender;
   }
 
@@ -31,7 +31,7 @@ contract SimpleWallet{
     }
   }
 
-  function sendFunds(uint amount, address receiver) returns (uint){
+  function sendFunds(uint amount, address receiver)  returns (uint){
     if(msg.sender!=owner && isAllowedToSend(msg.sender)==false) return;
     if(this.balance<amount) return;
 

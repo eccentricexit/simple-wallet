@@ -3,9 +3,9 @@
   <form ng-submit="depositFunds(address_from,amount_from)">
     <div class="form-group">
       <label for="addressFrom">Adress From</label>
-      <select ng-model="address_from" id="addresFrom">
-      <option ng-repeat="account in accounts">{{account}}</option>
-    </select>
+      <select ng-model="address_from" id="addresFrom" class="selectpicker">
+        <option ng-repeat="account in accounts">{{account}}</option>
+      </select>
     </div>
     <div class="form-group">
       <label for="amountInEther">Amount in Ether</label>
@@ -22,7 +22,7 @@
 </div>
 
 <div ng-show="has_errors">
-  <div class="alert allert-error" role="alert">
+  <div class="alert alert-error" role="alert">
     {{has_errors}}
   </div>
 </div>

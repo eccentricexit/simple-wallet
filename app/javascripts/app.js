@@ -1,59 +1,80 @@
-// Import the page's CSS. Webpack will know what to do with it.
-import { default as Web3} from 'web3';
-import { default as contract } from 'truffle-contract'
+import "../stylesheets/app.css";
+import {
+  default as Web3
+} from 'web3';
+import {
+  default as contract
+} from 'truffle-contract'
 import simplewallet_json from '../../build/contracts/SimpleWallet.json'
 
-var SimpleWallet = contract(simplewallet_json);
+window.SimpleWallet = contract(simplewallet_json);
 var angular = require('angular');
 var ng_route = require('angular-route');
-var app = angular.module("mySimpleWalletDapp",[ng_route]);
+var app = angular.module("mySimpleWalletDapp", [ng_route]);
 setupWeb3Provider();
 
-SimpleWallet.setProvider(web3.currentProvider);
+window.SimpleWallet.setProvider(web3.currentProvider);
 
-app.controller("MainController",function($scope){
-  $scope._var = 'Main';
+app.controller("MainController", function($scope) {
+  var contract = SimpleWallet.deployed().then(function(instance) {
+    $scope.balance = web3.eth.getBalance(instance.address).toNumber();
+    $scope.balanceInEth = web3.fromWei($scope.balance, "ether");
+    $scope.$apply();
+  });
+
 });
 
-app.controller("ShowEventsController",function($scope){
-    $scope._var = 'Show Events';
+app.controller("ShowEventsController", function($scope) {
+  $scope._var = 'Show Events';
 });
 
-app.controller("SendFundsController",function($scope){
+app.controller("SendFundsController", function($scope) {
   $scope.transfer_success = false;
   $scope.accounts = web3.eth.accounts;
 
 
-  $scope.depositFunds = function(address,amount){
-    var contract = SimpleWallet.deployed().then(function(instance){
-      web3.eth.sendTransaction({from: address,
-                                to: contract.address,
-                                value: web3.toWei(amount,"ether")},
-                               function(error,result){
-                                 if(error){$scope.has_errors = "An error has occurred: "+error;}
-                                 else{$scope.transfer_success = true;}
-                                 $scope.$apply();
-                               });
-                             });
+  $scope.depositFunds = function(address, amount) {
+    var contract = SimpleWallet.deployed().then(function(instance) {
+      console.log(instance);
+      console.log("contract address " + instance.address);
+      web3.eth.sendTransaction({
+          from: address,
+          to: instance.address,
+          value: web3.toWei(amount, "ether")          
+        },
+        function(error, result) {
+          console.log("transfering "+amount+" from: "+address+" to "+instance.address);
+          if (error) {
+            console.log("error.");
+            $scope.has_errors = "An error has occurred: " + error;
+          } else {
+            console.log("success.");
+            $scope.transfer_success = true;
+          }
+          $scope.$apply();
+        });
+    });
 
   }
 
 });
 
-app.config(function($routeProvider){
-  $routeProvider.when('/',{
-    templateUrl:'app/views/main.html',
-    controller:'MainController'
-  }).when('/events',{
-    templateUrl:'app/views/events.html',
-    controller:'ShowEventsController'
-  }).when('/sendfunds',{
-    templateUrl:'app/views/sendfunds.html',
-    controller:'SendFundsController'
-  }).otherwise({redirectTo:'/'});
+app.config(function($routeProvider) {
+  $routeProvider.when('/', {
+    templateUrl: 'app/views/main.html',
+    controller: 'MainController'
+  }).when('/events', {
+    templateUrl: 'app/views/events.html',
+    controller: 'ShowEventsController'
+  }).when('/sendfunds', {
+    templateUrl: 'app/views/sendfunds.html',
+    controller: 'SendFundsController'
+  }).otherwise({
+    redirectTo: '/'
+  });
 });
 
-function setupWeb3Provider(){
+function setupWeb3Provider() {
   if (typeof web3 !== 'undefined') {
     console.warn("Using web3 detected from external source. If you find that your accounts don't appear or you have 0 SimpleWallet, ensure you've configured that source properly. If using MetaMask, see the following link. Feel free to delete this warning. :) http://truffleframework.com/tutorials/truffle-and-metamask")
     // Use Mist/MetaMask's provider
