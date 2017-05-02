@@ -32,30 +32,49 @@ app.controller("SendFundsController", function($scope) {
   $scope.transfer_success = false;
   $scope.accounts = web3.eth.accounts;
 
-
   $scope.depositFunds = function(address, amount) {
     var contract = SimpleWallet.deployed().then(function(instance) {
-      console.log(instance);
-      console.log("contract address " + instance.address);
       web3.eth.sendTransaction({
           from: address,
           to: instance.address,
-          value: web3.toWei(amount, "ether")          
+          value: web3.toWei(amount, "ether")
         },
         function(error, result) {
-          console.log("transfering "+amount+" from: "+address+" to "+instance.address);
+          console.log("transfering " + amount + " from: " + address + " to " + instance.address);
           if (error) {
-            console.log("error.");
+            console.log(error);
             $scope.has_errors = "An error has occurred: " + error;
           } else {
-            console.log("success.");
+            console.log(result);
             $scope.transfer_success = true;
           }
           $scope.$apply();
         });
     });
+  };
 
-  }
+
+  $scope.withdrawFunds = function(address, amount) {
+    var contract = SimpleWallet.deployed().then(function(instance) {
+      console.log("contract address " + instance.address);
+      console.log("transfering " + amount + " from: " + instance.address + " to " + address);
+      instance.sendFunds(web3.toWei(amount,"ether"), address, {
+          from: web3.eth.accounts[0]
+        })
+        .then(function(newBalance) {
+          console.log("success");
+          console.log(newBalance);
+          $scope.transfer_success = true;
+          $scope.$apply();
+        },function(error){
+          console.log("error");
+          console.log(error);
+          $scope.has_errors=error;
+          $scope.$apply();
+        });
+
+    });
+  };
 
 });
 

@@ -32,15 +32,20 @@ contract SimpleWallet{
   }
 
   function sendFunds(uint amount, address receiver)  returns (uint){
-    if(msg.sender!=owner && isAllowedToSend(msg.sender)==false) return;
-    if(this.balance<amount) return;
+    if(isAllowedToSend(msg.sender)){
+      if(this.balance>=amount){
+        if(!receiver.send(amount)){
+          throw;
+        }
 
-    if(!receiver.send(amount)) throw;
-    Withdrawal(msg.sender,amount,receiver);
-    isAllowedToSendFundsMapping[msg.sender].amount_sends++;
-    isAllowedToSendFundsMapping[msg.sender].withdrawals[isAllowedToSendFundsMapping[msg.sender].amount_sends].to = receiver;
-    isAllowedToSendFundsMapping[msg.sender].withdrawals[isAllowedToSendFundsMapping[msg.sender].amount_sends].amount = amount;
-    return this.balance;
+        Withdrawal(msg.sender,amount,receiver);
+        isAllowedToSendFundsMapping[msg.sender].amount_sends++;
+        isAllowedToSendFundsMapping[msg.sender].withdrawals[isAllowedToSendFundsMapping[msg.sender].amount_sends].to = receiver;
+        isAllowedToSendFundsMapping[msg.sender].withdrawals[isAllowedToSendFundsMapping[msg.sender].amount_sends].amount = amount;
+        return this.balance; 
+      }
+    }
+
   }
 
   function allowAddressToSendMoney(address _address){
