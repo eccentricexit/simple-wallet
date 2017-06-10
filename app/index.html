@@ -10,16 +10,16 @@
     <script src="node_modules/angular-route/angular-route.js"></script>
 
     <script src="js/window-web3-attacher.js"></script>
+
+    <script src="js/app-setup.js"></script>
+    <script src="js/routes-config.js"></script>
     <script src="controllers/main-controller.js"></script>
+    <script src="js/controllers-config.js"></script>    
+
     <script src="app.js"></script>
 
   </head>
   <body>
-    <div ng-controller="MainController as main">
-      <label>Name:</label>
-      <input type="text" ng-model="main.someMessage" placeholder="Enter a name here">
-      <hr>
-      <h1>Hello! {{main.someMessage}}</h1>
-    </div>
+    <div ng-view></div>
   </body>
 </html>
