@@ -1,0 +1,30 @@
+<div ng-controller="SendFundsController as sendFunds">
+  <h1>Deposit</h1>
+  <hr />
+  <div ng-hide="sendFunds.transfer_success">
+    <form ng-submit="sendFunds.depositFunds(address_from,amount_from)">
+      <div class="form-group">
+        <label for="addressFrom">Address From</label>
+        <select id="addressFrom" ng-model="address_from">
+          <option ng-repeat="account in sendFunds.accounts">{{account}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="amountInEther">Amount in Ether:</label>
+        <input ng-model="amount_from" type="number" class="form-control"
+               id="amountInEther" placeholder="1" />
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </div>
+  <div ng-show="sendFunds.transfer_success">
+    <div class="alert alert-success">
+      Transfer successful
+    </div>
+  </div>
+  <div ng-show="sendFunds.has_errors">
+    <div class="alert alert-error">
+      {{sendFunds.has_errors}}
+    </div>
+  </div>
+</div>
