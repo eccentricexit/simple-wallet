@@ -1,25 +1,64 @@
 <!doctype html>
 <html ng-app="simpleWallet">
-  <head>
-    <meta charset="utf-8"/>
 
-    <script src="node_modules/web3/dist/web3.js"></script>
-    <script src="node_modules/truffle-contract/dist/truffle-contract.js"></script>
+<head>
+  <meta charset="utf-8" />
+  <title>SimpleWallet | truffle and angular1</title>
 
-    <script src="node_modules/angular/angular.js"></script>
-    <script src="node_modules/angular-route/angular-route.js"></script>
+  <link href="node_modules/open-sans-fontface/open-sans.css" rel="stylesheet">
 
-    <script src="js/window-web3-attacher.js"></script>
+  <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+  <link href="node_modules/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet">
+  <script src="node_modules/jquery/dist/jquery.js"></script>
+  <script src="node_modules/bootstrap/dist/js/boostrap.js"></script>
 
-    <script src="js/app-setup.js"></script>
-    <script src="js/routes-config.js"></script>
-    <script src="controllers/main-controller.js"></script>
-    <script src="js/controllers-config.js"></script>    
+  <script src="node_modules/web3/dist/web3.js"></script>
+  <script src="node_modules/truffle-contract/dist/truffle-contract.js"></script>
 
-    <script src="app.js"></script>
+  <script src="node_modules/angular/angular.js"></script>
+  <script src="node_modules/angular-route/angular-route.js"></script>
 
-  </head>
-  <body>
-    <div ng-view></div>
-  </body>
+  <script src="js/contracts-setup.js"></script>
+  <script src="js/window-web3-attacher.js"></script>
+  <script src="controllers/deposit-controller.js"></script>
+  <script src="controllers/withdrawal-controller.js"></script>
+  <script src="controllers/events-controller.js"></script>
+  <script src="controllers/main-controller.js"></script>
+
+  <script src="app.js"></script>
+
+</head>
+
+<body>
+  <div class="container">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+        <a class="navbar-brand" href="https://github.com/mtsalenc/SimpleWallet">SimpleWallet</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li ><a href="index.html#!/" target="_self">Home <span class="sr-only">(current)</span></a></li>
+          <li><a href="index.html#!/deposit" target="_self">Deposit Funds</a></li>
+          <li><a href="index.html#!/withdrawl" target="_self">Withdrawl Funds</a></li>
+          <li><a href="index.html#!/events" target="_self">Events</a></li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+  </nav>
+  <div ng-view></div>
+  </div>
+</body>
+
 </html>
