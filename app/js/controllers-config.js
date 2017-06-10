@@ -1,1 +1,0 @@
-app.controller("MainController", MainController);
