@@ -1,16 +1,16 @@
 # Simple Wallet
-This is a simple wallet built to study the integration of webpack, angular and truffle.
+This is a simple wallet dapp built to study the integration angular and truffle for deployment on swarm.
 
 ## Deploy Locally
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 1. ```git clone https://github.com/mtsalenc/SimpleWallet.git```
-2. ```cd SimpleWallet```
+2. ```cd SimpleWallet/app```
 3. ```npm install```
 4. ```truffle compile```
 5. Start ```testrpc``` on another terminal
 6. ```truffle migrate```
-7. ```npm run dev```
+7. Open index.html on any browser.
 
 
 ### Prerequisites
