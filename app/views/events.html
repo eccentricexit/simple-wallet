@@ -1,4 +1,9 @@
 <div ng-controller="EventsController as events">
   <h1>Events</h1>
   <hr />
+  <div ng-repeat='event in events.events'>
+    Type: {{event.event}} <br  />
+    Amount: {{event.args.amount}}
+    <hr  />
+  </div>
 </div>
