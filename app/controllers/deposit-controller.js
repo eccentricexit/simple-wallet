@@ -1,8 +1,6 @@
 function SendFundsController($scope) {
   var vm = this;
   vm.accounts = web3.eth.accounts;
-
-
   vm.depositFunds = function(address_from, amount_from) {
 
     SimpleWallet.deployed().then(function(instance){
