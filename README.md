@@ -43,10 +43,13 @@ These instructions will get you a copy of the project up and running on your loc
 7. Copy the json inside build/contracts/SimpleWallet.json and paste it as an argument to the TruffleContract() function inside app/js/contracts-setup.js
 8. Open index.html on any [modern](browsehappy.com) browser.
 
-# Screenshots
+## Screenshots
 
-  TODOS
-
+![](https://raw.githubusercontent.com/mtsalenc/SimpleWallet/master/screenshots/2017-06-24-193652_1366x768_scrot.png)
+![](https://raw.githubusercontent.com/mtsalenc/SimpleWallet/master/screenshots/2017-06-24-193729_1366x768_scrot.png)
+![](https://raw.githubusercontent.com/mtsalenc/SimpleWallet/master/screenshots/2017-06-24-193744_1366x768_scrot.png)
+![](https://raw.githubusercontent.com/mtsalenc/SimpleWallet/master/screenshots/2017-06-24-193828_1366x768_scrot.png)
+![](https://raw.githubusercontent.com/mtsalenc/SimpleWallet/master/screenshots/2017-06-24-194253_1366x768_scrot.png)
 ## License
 
 This project is licensed under the MIT License
