@@ -12,9 +12,9 @@ It Allows addresses that **the owner of the contract gave permission** to withdr
 
 Therefore is **no guarantee** that the frontend will be available when you access it. There is a chance that the Rinkeby testnet is lacking miners and/or has been abandoned, resulting in congestion.
 
-See [Deploy Locally](#Deploy-Locally) section to run the dapp with testrpc.
+See [Deploy Locally](#deploy-locally) section to run the dapp with testrpc.
 
-See [Screenshots](#Screenshots) section below to understand quickly what this app does.
+See [Screenshots](#screenshots) section below to understand quickly what this app does.
 
 ### Steps
 1. Install [Metamask](https://metamask.io/) - Allows dapp browsing without the need for a full client.
