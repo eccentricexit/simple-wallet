@@ -12,7 +12,7 @@ It Allows addresses that **the owner of the contract gave permission** to withdr
 
 Therefore is **no guarantee** that the frontend will be available when you access it. There is a chance that the Rinkeby testnet is lacking miners and/or has been abandoned, resulting in congestion.
 
-See [Deploy Locally](#deploy-locally) section to run the dapp with testrpc.
+See [Deploy Locally](##deploy-locally) section to run the dapp with testrpc.
 
 See [Screenshots](#screenshots) section below to understand quickly what this app does.
 
@@ -22,6 +22,8 @@ See [Screenshots](#screenshots) section below to understand quickly what this ap
 3. Access the dapp on swarm by clicking [here](http://swarm-gateways.net/bzz:/a1d425654b55662f76bd0cd558208984ac629fc9d9852f3b2224c74028c9c25e/index.html).
 4. Be a little bit patient as this is the test environment is run by volunteers :)
 
+
+## Deploy Locally
 ### Prerequisites
 
 - [git](https://git-scm.com/-) - the open source distributed vcs.
