@@ -12,7 +12,7 @@ It Allows addresses that **the owner of the contract gave permission** to withdr
 
 Therefore is **no guarantee** that the frontend will be available when you access it. There is a chance that the Rinkeby testnet is lacking miners and/or has been abandoned, resulting in congestion.
 
-See [Deploy Locally](##deploy-locally) section to run the dapp with testrpc.
+See [Deploy Locally](#deploy-locally) section to run the dapp with testrpc.
 
 See [Screenshots](#screenshots) section below to understand quickly what this app does.
 
