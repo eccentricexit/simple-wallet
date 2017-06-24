@@ -4,8 +4,7 @@ function EventsController($scope){
 
   SimpleWallet.deployed()
     .then(function(instance) {
-
-      var eventsToWatch = instance.allEvents({fromBlock: 0, toBlock: 'latest'});
+      var eventsToWatch = instance.allEvents({fromBlock: 200000, toBlock: 'latest'});
 
       eventsToWatch.watch(function(error,result){
         vm.events.push(result);
