@@ -15,6 +15,7 @@ function SendFundsController($scope) {
       }, function(error, result) {
         if(error){
           vm.has_errors = true;
+          console.log(error);
         }else{
           vm.transfer_success = true;
         }
