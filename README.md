@@ -2,7 +2,7 @@
 
 This is a serverless dapp wallet built to study the integration angular and truffle for deployment on swarm.
 It Allows addresses that **the owner of the contract gave permission** to withdraw and deposit funds from it.
-See [Screenshots](#screenshots) section below to understand quickly what this app does.
+See [Screenshots](#screenshots) section below to quickly understand what this app does.
 
 ![](https://raw.githubusercontent.com/mtsalenc/SimpleWallet/master/screenshots/technologies.png)
 
@@ -17,8 +17,8 @@ Therefore is **no guarantee** that the frontend will be available when you acces
 ### Steps
 1. Install [Metamask](https://metamask.io/) - Allows dapp browsing without the need for a full client.
 2. Connect metamask to the Rinkeby testnet.
-3. Access the dapp on swarm by clicking [here](http://swarm-gateways.net/bzz:/d086e073a25d6822af98ca363cb4115b3a49a286f2af7722b545902c1b144124/index.html).
-4. Be a little bit patient as this is the test environment is run by volunteers :)
+3. Access the dapp on swarm through  [swarm-gateways](http://swarm-gateways.net/bzz:/d086e073a25d6822af98ca363cb4115b3a49a286f2af7722b545902c1b144124/index.html).
+4. Be a little bit patient as this is the whole test environment is run by volunteers :)
 
 
 ## Deploy Locally
