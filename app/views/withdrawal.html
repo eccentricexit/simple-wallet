@@ -26,7 +26,12 @@
   </div>
   <div ng-show="withdrawal.has_errors">
     <div class="alert alert-error">
-      {{sendFunds.has_errors}}
+      {{withdrawal.has_errors}}
+    </div>
+  </div>
+  <div ng-show="!withdrawal.isAllowedToWithdrawFunds">
+    <div class="alert alert-error">
+      The address {{withdrawal.selectedAccount}} does not have permission to withdraw funds.
     </div>
   </div>
 </div>
