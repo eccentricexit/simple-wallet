@@ -169,11 +169,57 @@ var SimpleWallet = TruffleContract({
         }
       },
       "links": {},
-      "address": "0xef53ddb0d863ddcc04b2571b286e78d3f2f26c84",
-      "updated_at": 1498324075459
+      "address": "0x0a33f70dd9c9ff02c6fe41f02a94fe78c8d24db9",
+      "updated_at": 1498402301332
+    },
+    "1498352706359": {
+      "events": {
+        "0xe1fffcc4923d04b559f4d29a8bfc6cda04eb5b0d3c460751c2402c5c5cc9109c": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "_sender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "amount",
+              "type": "uint256"
+            }
+          ],
+          "name": "Deposit",
+          "type": "event"
+        },
+        "0x001a143d5b175701cb3246058ffac3d63945192075a926ff73a19930f09d587a": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "_sender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "_beneficiary",
+              "type": "address"
+            }
+          ],
+          "name": "Withdrawal",
+          "type": "event"
+        }
+      },
+      "links": {},
+      "address": "0x76ddc19e6608806af8fde8910099319c6d893215",
+      "updated_at": 1498352785657
     }
   },
   "schema_version": "0.0.5",
-  "updated_at": 1498324075459
+  "updated_at": 1498402301332
 }
 );
