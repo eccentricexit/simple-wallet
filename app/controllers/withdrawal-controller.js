@@ -10,13 +10,15 @@ function WithdrawalController($scope) {
     SimpleWallet.deployed()
       .then(function(instance) {
         vm.instance = instance;
+        //console.log("got deployed contract instance");
         return instance.isAllowedToSend(address);
       })
       .then(function(result) {
         vm.isAllowedToWithdrawFunds = result;
-
-        if (result) {
-          vm.instance.sendFunds(web3.toWei(amount, "ether"), address, {
+        //console.log("is address is allowed to send funds? " + result);
+        console.log("attempting transaction, please wait.");
+        if (vm.isAllowedToWithdrawFunds) {
+          vm.instance.sendFunds(web3.toWei(amount, "ether"), vm.selectedAccount, {
               from: web3.eth.accounts[0],
               gas: 200000
             })
@@ -29,7 +31,8 @@ function WithdrawalController($scope) {
               vm.has_errors = error;
               $scope.$apply();
             });
-        }else{
+        } else {
+          console.log("withdraw blocked, address cannot withdraw funds");
           $scope.$apply();
         }
       });
