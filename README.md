@@ -2,6 +2,7 @@
 
 This is a serverless dapp wallet built to study the integration angular and truffle for deployment on swarm.
 It Allows addresses that **the owner of the contract gave permission** to withdraw and deposit funds from it.
+See [Screenshots](#screenshots) section below to understand quickly what this app does.
 
 ![](https://raw.githubusercontent.com/mtsalenc/SimpleWallet/master/screenshots/technologies.png)
 
@@ -9,17 +10,14 @@ It Allows addresses that **the owner of the contract gave permission** to withdr
 **Note 1**: The backend is not hosted on the main net. Instead it is hosted on the ethereum testnet Rinkeby.
 
 **Note 2**: The frontend is hosted on swarm, which has also not been deployed to the main net at the time of writing. It may not be available.
-
 Therefore is **no guarantee** that the frontend will be available when you access it. There is a chance that the Rinkeby testnet is lacking miners and/or has been abandoned, resulting in congestion.
 
-See [Deploy Locally](#deploy-locally) section to run the dapp with testrpc.
-
-See [Screenshots](#screenshots) section below to understand quickly what this app does.
+[Contract info](https://rinkeby.etherscan.io/address/0x0a33f70dd9c9ff02c6fe41f02a94fe78c8d24db9)
 
 ### Steps
 1. Install [Metamask](https://metamask.io/) - Allows dapp browsing without the need for a full client.
 2. Connect metamask to the Rinkeby testnet.
-3. Access the dapp on swarm by clicking [here](http://swarm-gateways.net/bzz:/a1d425654b55662f76bd0cd558208984ac629fc9d9852f3b2224c74028c9c25e/index.html).
+3. Access the dapp on swarm by clicking [here](http://swarm-gateways.net/bzz:/d086e073a25d6822af98ca363cb4115b3a49a286f2af7722b545902c1b144124/index.html).
 4. Be a little bit patient as this is the test environment is run by volunteers :)
 
 
@@ -52,6 +50,7 @@ These instructions will get you a copy of the project up and running on your loc
 ![](https://raw.githubusercontent.com/mtsalenc/SimpleWallet/master/screenshots/2017-06-24-193744_1366x768_scrot.png)
 ![](https://raw.githubusercontent.com/mtsalenc/SimpleWallet/master/screenshots/2017-06-24-193828_1366x768_scrot.png)
 ![](https://raw.githubusercontent.com/mtsalenc/SimpleWallet/master/screenshots/2017-06-24-194253_1366x768_scrot.png)
-## License
 
+
+## License
 This project is licensed under the MIT License
