@@ -41,7 +41,7 @@ These instructions will get you a copy of the project up and running on your loc
 5. Start `testrpc` on another terminal
 6. Back on the previous terminal: `truffle migrate`
 7. Copy the json inside build/contracts/SimpleWallet.json and paste it as an argument to the TruffleContract() function inside app/js/contracts-setup.js
-8. Open index.html on any [modern](browsehappy.com) browser.
+8. Open index.html on any [modern](https://browsehappy.com/) browser.
 
 ## Screenshots
 
