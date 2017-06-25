@@ -13,21 +13,25 @@ function SendFundsController($scope) {
     }).then(function(result) {
       vm.isAllowedToSendFunds = result;
 
-      if (!vm.isAllowedToSendFund) return;
+      if (vm.isAllowedToSendFunds) {
+        web3.eth.sendTransaction({
+          from: address_from,
+          to: contract.address,
+          value: web3.toWei(amount, "ether")
+        }, function(error, result) {
+          if (error) {
+            vm.has_errors = true;
+            console.log(error);
+          } else {
+            console.log("transfer successful");
+            vm.transfer_success = true;
+            $scope.$apply();
+          }
+        });
+      }else{
+        console.log("is address allowed to send funds: "+vm.isAllowedToSendFunds);
+      }
 
-      web3.eth.sendTransaction({
-        from: address_from,
-        to: contract.address,
-        value: web3.toWei(amount, "ether")
-      }, function(error, result) {
-        if (error) {
-          vm.has_errors = true;
-          console.log(error);
-        } else {
-          vm.transfer_success = true;
-        }
-      });
-      
       $scope.$apply();
     });
   };
