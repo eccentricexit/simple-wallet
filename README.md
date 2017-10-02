@@ -7,19 +7,18 @@ See [Screenshots](#screenshots) section below to quickly understand what this ap
 ![](https://raw.githubusercontent.com/mtsalenc/SimpleWallet/master/screenshots/technologies.png)
 
 ## See it live
-**Note 1**: The backend is not hosted on the main net. Instead it is hosted on the ethereum testnet Rinkeby.
-
-**Note 2**: The frontend is hosted on swarm, which has also not been deployed to the main net at the time of writing. It may not be available.
-Therefore is **no guarantee** that the frontend will be available when you access it. There is a chance that the Rinkeby testnet is lacking miners and/or has been abandoned, resulting in congestion.
-
-[Contract info](https://rinkeby.etherscan.io/address/0x0a33f70dd9c9ff02c6fe41f02a94fe78c8d24db9)
 
 ### Steps
 1. Install [Metamask](https://metamask.io/) - Allows dapp browsing without the need for a full client.
 2. Connect metamask to the Rinkeby testnet.
-3. Access the dapp on swarm through  [swarm-gateways](http://swarm-gateways.net/bzz:/d086e073a25d6822af98ca363cb4115b3a49a286f2af7722b545902c1b144124/index.html).
-4. Be a little bit patient as this is the whole test environment is run by volunteers :)
+3. Access the dapp on swarm through  [swarm-gateways](http://swarm-gateways.net/bzz:/d086e073a25d6822af98ca363cb4115b3a49a286f2af7722b545902c1b144124/index.html) or, if swarm is misbehaving (this is experimental technology), access it [here](mtsalenc.github.io/project-pages/simple-wallet).
 
+**Note 1**: The backend is not hosted on the main net. Instead, it is hosted on the Rinkeby testnet.
+
+**Note 2**: The frontend is hosted on swarm, which has not been deployed to the main net at the time of writing. It may not be available or misbehave (this is experimental technology).
+Therefore is **no guarantee** that the frontend will be available when you access it. There is a chance that the Rinkeby testnet is lacking miners and/or has been abandoned, resulting in congestion.
+
+[Contract info](https://rinkeby.etherscan.io/address/0x0a33f70dd9c9ff02c6fe41f02a94fe78c8d24db9)
 
 ## Deploy Locally
 ### Prerequisites
