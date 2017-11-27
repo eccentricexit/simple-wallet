@@ -10,8 +10,8 @@ See [Screenshots](#screenshots) section below to quickly understand what this ap
 
 ### Steps
 1. Install [Metamask](https://metamask.io/) - Allows dapp browsing without the need for a full client.
-2. Connect metamask to the Rinkeby testnet.
-3. Access the dapp on swarm through  [swarm-gateways](http://swarm-gateways.net/bzz:/d086e073a25d6822af98ca363cb4115b3a49a286f2af7722b545902c1b144124/index.html) or, if swarm is misbehaving (this is experimental technology), access it [here](mtsalenc.github.io/project-pages/simple-wallet).
+2. Connect metamask to the **Rinkeby** testnet.
+3. Access the dapp on swarm through  [swarm-gateways](http://swarm-gateways.net/bzz:/d086e073a25d6822af98ca363cb4115b3a49a286f2af7722b545902c1b144124/index.html) or, if swarm is misbehaving (this is experimental technology), access it [here](https://mtsalenc.github.io/project-pages/simple-wallet/#!/).
 
 **Note 1**: The backend is not hosted on the main net. Instead, it is hosted on the Rinkeby testnet.
 
