@@ -1,5 +1,7 @@
 # Simple Wallet
 
+>**Warning**: This is outdated code and probably contains vulnerabilities. Use it to study only.
+
 This is a serverless dapp wallet built to study the integration angular and truffle for deployment on swarm.
 It Allows addresses that **the owner of the contract gave permission** to withdraw and deposit funds from it.
 See [Screenshots](#screenshots) section below to quickly understand what this app does.
