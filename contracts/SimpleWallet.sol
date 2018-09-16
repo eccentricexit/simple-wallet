@@ -1,71 +1,65 @@
-pragma solidity ^0.4.8;
-contract SimpleWallet{
+pragma solidity 0.4.24;
+pragma experimental "v0.5.0";
 
-  address owner;
+import "../installed_contracts/zeppelin/contracts/ownership/Ownable.sol";
 
-  struct WithdrawalStruct{
-    address to;
-    uint amount;
-  }
 
-  struct Senders {
-    bool isAllowed;
-    uint amount_sends;
-    mapping(uint => WithdrawalStruct) withdrawals;
-  }
+contract SimpleWallet is Ownable {
 
-  mapping(address => Senders) isAllowedToSendFundsMapping;
-
-  event Deposit(address _sender, uint amount);
-  event Withdrawal(address _sender, uint amount, address _beneficiary);
-
-  function SimpleWallet() payable{
-    owner = msg.sender;
-  }
-
-  function() payable{
-    if(msg.sender==owner || isAllowedToSendFundsMapping[msg.sender].isAllowed==true){
-      Deposit(msg.sender,msg.value);
-    }else{
-      throw;
-    }
-  }
-
-  function sendFunds(uint amount, address receiver)  returns (uint){
-    if(isAllowedToSend(msg.sender)){
-      if(this.balance>=amount){
-        if(!receiver.send(amount)){
-          throw;
-        }
-
-        Withdrawal(msg.sender,amount,receiver);
-        isAllowedToSendFundsMapping[msg.sender].amount_sends++;
-        isAllowedToSendFundsMapping[msg.sender].withdrawals[isAllowedToSendFundsMapping[msg.sender].amount_sends].to = receiver;
-        isAllowedToSendFundsMapping[msg.sender].withdrawals[isAllowedToSendFundsMapping[msg.sender].amount_sends].amount = amount;
-        return this.balance; 
-      }
+    struct WithdrawalStruct {
+        address to;
+        uint amount;
     }
 
-  }
+    struct Senders {
+        bool isAllowed;
+        uint256 amountSends;
+        mapping(uint => WithdrawalStruct) withdrawals;
+    }
 
-  function allowAddressToSendMoney(address _address){
-    if(msg.sender!=owner) return;
-    isAllowedToSendFundsMapping[_address].isAllowed = true;
-  }
+    mapping(address => Senders) public senderData;
 
-  function disallowToSendMoney(address _address){
-    if(msg.sender!=owner) return;
-    isAllowedToSendFundsMapping[_address].isAllowed = false;
-  }
+    event Deposit(address _sender, uint _amount);
+    event Withdrawal(address _sender, uint _amount, address _beneficiary);
 
-  function isAllowedToSend(address _address) constant returns (bool){
-    return isAllowedToSendFundsMapping[_address].isAllowed || _address == owner;
-  }
+    modifier onlyAllowed() {
+        require(
+            msg.sender == owner
+            || senderData[msg.sender].isAllowed,
+            "msg.sender must be authorized"
+        );
+        _;
+    }
 
-  function killWallet(){
-    if(msg.sender!=owner) return;
-    suicide(owner);
-  }
+    function() external payable onlyAllowed {
+        emit Deposit(msg.sender, msg.value);
+    }
 
+    function sendFunds(uint256 _amount, address _receiver) external onlyAllowed returns (uint256) {
+        require(address(this).balance >= _amount, "not enough funds in contract");
+
+        senderData[msg.sender].amountSends++;
+        senderData[msg.sender].withdrawals[senderData[msg.sender].amountSends].to = _receiver;
+        senderData[msg.sender].withdrawals[senderData[msg.sender].amountSends].amount = _amount;
+        emit Withdrawal(msg.sender, _amount, _receiver);
+        _receiver.transfer(_amount);
+        return address(this).balance;
+    }
+
+    function disallowToSendMoney(address _address) external onlyOwner {
+        senderData[_address].isAllowed = false;
+    }
+
+    function killWallet() external onlyOwner {
+        selfdestruct(owner);
+    }
+
+    function allowAddressToSendMoney(address _address) external onlyOwner {
+        senderData[_address].isAllowed = true;
+    }
+
+    function isAllowedToSendFunds(address _address) public view returns (bool) {
+        return _address == owner || senderData[_address].isAllowed;
+    }
 
 }
